@@ -1,0 +1,37 @@
+name: Post updates to Mamba's Insider
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes
+  workflow_dispatch: {}       # lets you trigger it manually from the Actions tab
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python bot.py
+
+      - name: Commit updated state files
+        run: |
+          git config user.name "mambas-bot"
+          git config user.email "actions@github.com"
+          git add state.json calls.json
+          git diff --quiet --cached || git commit -m "Update bot state [skip ci]"
+          git push
