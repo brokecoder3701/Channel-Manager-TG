@@ -1,0 +1,28 @@
+{
+  "telegram_channel": "@mambasinsider",
+
+  "news_feeds": [
+    "https://www.coindesk.com/arc/outboundfeeds/rss/",
+    "https://www.theblock.co/rss.xml",
+    "https://decrypt.co/feed",
+    "https://news.google.com/rss/search?q=Trump+when:1d&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=Elon+Musk+when:1d&hl=en-US&gl=US&ceid=US:en",
+    "https://news.google.com/rss/search?q=Federal+Reserve+interest+rates+when:1d&hl=en-US&gl=US&ceid=US:en"
+  ],
+
+  "news_keywords": [
+    "trump", "elon", "musk", "bitcoin", "btc", "ethereum", "eth",
+    "crypto", "sec", "fed", "interest rate", "tariff", "stock market",
+    "regulation", "etf", "polymarket"
+  ],
+
+  "max_news_posts_per_run": 5,
+
+  "polymarket_search_terms": [
+    "trump", "elon", "musk", "fed rate", "bitcoin", "recession", "tariff"
+  ],
+  "polymarket_swing_threshold_pct": 8,
+  "max_polymarket_posts_per_run": 5,
+
+  "anthropic_model": "claude-haiku-4-5-20251001"
+}
